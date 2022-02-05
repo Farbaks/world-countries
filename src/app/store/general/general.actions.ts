@@ -7,5 +7,5 @@ export const addCountries = createAction(
 
 export const addVisitedCountries = createAction(
   '[General] Add Visited Countries',
-  props<{ visitedCountries: Array<string> }>()
+  props<{ visitedCountries: Array<any> }>()
 )

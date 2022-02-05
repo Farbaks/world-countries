@@ -6,7 +6,7 @@ export const generalFeatureKey = 'general';
 
 export interface State {
   countries: Array<any>
-  visitedCountries: Array<string>
+  visitedCountries: Array<any>
 }
 
 export const initialState: State = {

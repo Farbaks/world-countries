@@ -17,6 +17,7 @@ export class AppComponent {
     private generalService: GeneralService,
     private generalStore: Store<GeneralReducer.State>) {
     this.getCountries();
+    // this.getVisitedCountries();
   }
 
   getCountries() {
@@ -37,5 +38,9 @@ export class AppComponent {
         this.generalStore.dispatch(GeneralActions.addCountries({ countries: countries }));
       }
     )
+  }
+
+  getVisitedCountries() {
+    this.generalService.addVisitedCountry();
   }
 }

@@ -108,7 +108,7 @@ h6 {
 }
 
 .dropdown-1 {
-    min-width: 180px !important;
+    min-width: 200px !important;
     margin-top: 7px;
     background: var(--header-background);
     button span {
@@ -118,4 +118,92 @@ h6 {
 
 ngx-skeleton-loader .loader {
     background-color: var(--loader-background) !important;
+}
+
+.top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media screen and (max-width: 575px) {
+        flex-flow: column;
+    }
+    .input-field {
+        width: 40%;
+        height: 50px;
+        box-shadow: var(--box-shadow-2);
+        background: var(--header-background);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px;
+        @media screen and (max-width: 575px) {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        img {
+            width: 20px;
+        }
+        input {
+            height: 100%;
+            flex-grow: 1;
+            border: none;
+            background: transparent;
+            padding: 20px;
+            color: var(--text-color-1);
+            font-weight: 500;
+        }
+    }
+    .select-container {
+        min-width: 200px;
+        height: 50px;
+        padding: 13px 30px 13px 20px;
+        display: flex;
+        align-items: center;
+        background: var(--header-background);
+        box-shadow: var(--box-shadow-2);
+        border-radius: 3px;
+        cursor: pointer;
+        position: relative;
+        @media screen and (max-width: 575px) {
+            width: 100%;
+        }
+        &:after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid var(--text-color-2);
+            border-bottom: 2px solid var(--text-color-2);
+            border-radius: 2px;
+            opacity: 0.5;
+            position: absolute;
+            right: 20px;
+            transform: rotate(45deg);
+        }
+        span {
+            margin-right: 20px;
+            color: var(--text-color-2);
+            font-size: 14px;
+            font-weight: 400;
+            user-select: none;
+        }
+    }
+    button {
+        height: 45px;
+        display: flex;
+        align-items: center;
+        color: var(--text-color-1);
+        font-size: 15px;
+        background: var(--header-background);
+        box-shadow: var(--box-shadow-2);
+        border: none;
+        border-radius: 4px;
+        padding: 6px 30px;
+        place-self: flex-start;
+        cursor: pointer;
+        img {
+            width: 20px;
+            margin-right: 10px;
+        }
+    }
 }

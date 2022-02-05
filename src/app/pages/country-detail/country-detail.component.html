@@ -1,1 +1,98 @@
-<p>country-detail works!</p>
+<div class="country-page">
+    <div class="top">
+        <button (click)="goBack()">
+            <img class="light-mode-item" src="assets/images/arrow-left.svg" />
+            <img class="dark-mode-item" src="assets/images/arrow-left-white.svg" />
+            Back
+        </button>
+    </div>
+    <div class="nav" *ngIf="!fetchingData && visitedCountries.length > 0">
+        <p>Recently viewed:</p>
+        <div class="links">
+            <span
+            [routerLink]="['/countries/'+ country.name.common]"
+                *ngFor="let country of visitedCountries.slice((visitedCountries.length - 5), visitedCountries.length)">
+                {{country.name.common}}
+            </span>
+        </div>
+    </div>
+    <div class="body">
+        <div class="flag">
+            <ng-container *ngIf="fetchingData">
+                <ngx-skeleton-loader style="width: 100%;"
+                    [theme]="{'width':'100%','height':'350px','margin-bottom':'0px'}">
+                </ngx-skeleton-loader>
+            </ng-container>
+            <ng-container *ngIf="!fetchingData">
+                <img [src]="country.flags.svg" />
+            </ng-container>
+        </div>
+        <div class="right">
+            <ng-container *ngIf="fetchingData">
+                <h2 class="heading">
+                    <ngx-skeleton-loader [theme]="{'width':'100px','height':'20px','margin-bottom':'0px'}">
+                    </ngx-skeleton-loader>
+                </h2>
+                <div class="row" *ngFor="let n of [1,2,3,4]">
+                    <p class="text">
+                        <ngx-skeleton-loader style="width: 100%;"
+                            [theme]="{'width':'80%','height':'15px','margin-bottom':'0px'}">
+                        </ngx-skeleton-loader>
+                    </p>
+                    <p class="text">
+                        <ngx-skeleton-loader style="width: 100%;"
+                            [theme]="{'width':'80%','height':'15px','margin-bottom':'0px'}">
+                        </ngx-skeleton-loader>
+                    </p>
+                </div>
+                <div class="borders">
+                    <p class="title">
+                        <ngx-skeleton-loader [theme]="{'width':'120px','height':'15px','margin-bottom':'0px'}">
+                        </ngx-skeleton-loader>
+                    </p>
+                    <div class="list">
+                        <ng-container *ngFor="let n of [1,2,3,4]">
+                            <ngx-skeleton-loader [theme]="{'width':'80px','height':'25px','margin-bottom':'0px'}">
+                            </ngx-skeleton-loader>
+                        </ng-container>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!fetchingData">
+                <h2 class="heading">{{country.name.common | titlecase}}</h2>
+                <div class="row">
+                    <p class="text">Population: <span> {{country.population | number}}</span></p>
+                    <p class="text" *ngIf="country.capital">Capital: <span> {{country.capital}}</span></p>
+                </div>
+                <div class="row">
+                    <p class="text">Region: <span> {{country.region | titlecase}}</span></p>
+                    <p class="text" *ngIf="country.subregion">Sub-region: <span> {{country.subregion |
+                            titlecase}}</span>
+                    </p>
+                </div>
+                <div class="row">
+                    <p class="text">Language(s): <span> {{country.languages}}</span></p>
+                    <p class="text">Landlocked: <span> {{country.landlocked ? 'Yes' : 'No'}}</span></p>
+                </div>
+                <div class="row">
+                    <p class="text" *ngIf="country.currencies.length > 0">Currencies: <span>
+                            {{country.currencies}}</span>
+                    </p>
+                    <p class="text">Independent: <span> {{country.independent ? 'Yes' : 'No'}}</span></p>
+                </div>
+                <div class="row">
+                    <p class="text">Time Zones: <span> {{country.timezones }}</span></p>
+                    <p class="text">Location: <span> {{country.latlng[0]}} , {{country.latlng[1]}}</span></p>
+                </div>
+                <div class="borders" *ngIf="this.borderCountries.length > 0">
+                    <p class="title">Border Countries</p>
+                    <div class="list">
+                        <a class="item" [routerLink]="['/countries/'+ country.name.common]"
+                            *ngFor="let country of borderCountries">{{country.name.common}}</a>
+                    </div>
+                </div>
+            </ng-container>
+
+        </div>
+    </div>
+</div>

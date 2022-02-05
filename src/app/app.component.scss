@@ -5,9 +5,7 @@
     .page-body {
         width: 100%;
         min-height: 100%;
-        content: '';
-        
-        padding: 0 var(--side-padding);
+        padding: 80px var(--side-padding);
         overflow-x: hidden;
         flex-grow: 1;
     }

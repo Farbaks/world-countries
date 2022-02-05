@@ -1,75 +1,6 @@
 .country-page {
     width: 100%;
     height: 100%;
-    padding: 80px 0;
-    .top {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        @media screen and (max-width: 575px) {
-            flex-flow: column;
-        }
-        .input-field {
-            width: 40%;
-            height: 50px;
-            box-shadow: var(--box-shadow-2);
-            background: var(--header-background);
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 10px;
-            @media screen and (max-width: 575px) {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            img {
-                width: 20px;
-            }
-            input {
-                height: 100%;
-                flex-grow: 1;
-                border: none;
-                background: transparent;
-                padding: 20px;
-                color: var(--text-color-1);
-                font-weight: 500;
-            }
-        }
-        .select-container {
-            height: 50px;
-            padding: 13px 30px 13px 20px;
-            display: flex;
-            align-items: center;
-            background: var(--header-background);
-            box-shadow: var(--box-shadow-2);
-            border-radius: 3px;
-            cursor: pointer;
-            position: relative;
-            @media screen and (max-width: 575px) {
-                width: 100%;
-            }
-            &:after {
-                content: "";
-                width: 8px;
-                height: 8px;
-                border-right: 2px solid var(--text-color-2);
-                border-bottom: 2px solid var(--text-color-2);
-                border-radius: 2px;
-                opacity: 0.5;
-                position: absolute;
-                right: 20px;
-                transform: rotate(45deg);
-            }
-            span {
-                margin-right: 20px;
-                color: var(--text-color-2);
-                font-size: 14px;
-                font-weight: 400;
-                user-select: none;
-            }
-        }
-    }
     .list {
         width: 100%;
         height: 100%;
@@ -95,6 +26,9 @@
             display: flex;
             flex-flow: column;
             flex-shrink: 0;
+            border: solid 1px var(--text-color-3);
+            border-radius: 4px;
+            overflow: hidden;
             @media screen and (max-width: 575px) {
                 width: 48%;
             }
@@ -126,11 +60,11 @@
                     font-weight: 600;
                     color: var(--text-color-2);
                     margin-bottom: 10px;
-                    span {
-                        font-weight: 400;
-                    }
                     &:last-child {
                         margin-bottom: 0;
+                    }
+                    span {
+                        font-weight: 400;
                     }
                 }
             }

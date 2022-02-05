@@ -1,6 +1,6 @@
 <div class="country-page">
-
     <div class="top">
+        <!-- Loading state -->
         <ng-container *ngIf="fetchingData">
             <ngx-skeleton-loader style="width: 100%;"
                 [theme]="{'width':'40%','height':'50px','margin-bottom':'0px'}">
@@ -8,6 +8,7 @@
             <ngx-skeleton-loader [theme]="{'width':'150px','height':'50px','margin-bottom':'0px'}">
             </ngx-skeleton-loader>
         </ng-container>
+        <!-- Data state -->
         <ng-container *ngIf="!fetchingData">
             <div class="input-field">
                 <img class="light-mode-item" src="assets/images/search.svg">
@@ -16,7 +17,7 @@
             </div>
             <div class="select-container" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Country Regions">
                 <span>{{(selectedRegion && !['', 'all'].includes(selectedRegion)) ? selectedRegion : 'Filter By Region'}}</span>
-                <mat-menu #menu="matMenu" [class]="'dropdown-1'">
+                <mat-menu #menu="matMenu" xPosition="before" [class]="'dropdown-1'">
                     <button mat-menu-item (click)="filterByRegion('all')">
                         <span>All</span>
                     </button>
@@ -41,6 +42,7 @@
 
     </div>
     <div class="list">
+        <!-- Loading state -->
         <ng-container *ngIf="fetchingData">
             <div class="item" *ngFor="let n of [1,2,3,4,5,6,7,8,9,10]">
                 <div class="flag">
@@ -68,7 +70,9 @@
                 </div>
             </div>
         </ng-container>
+        <!-- Data state -->
         <ng-container *ngIf="!fetchingData">
+            <!--  -->
             <ng-container *ngIf="filteredCountries.length > 0">
                 <div class="item hover" [routerLink]="country.name.common" *ngFor="let country of filteredCountries">
                     <div class="flag">
@@ -80,10 +84,11 @@
                         </p>
                         <p class="text">Population: <span> {{country.population | number}}</span></p>
                         <p class="text">Region: <span> {{country.region | titlecase}}</span></p>
-                        <p class="text" *ngIf="country.capital">Capital: <span> {{country.capital[0]}}</span></p>
+                        <p class="text" *ngIf="country.capital">Capital: <span> {{country.capital}}</span></p>
                     </div>
                 </div>
             </ng-container>
+            <!-- Empty state -->
             <div class="message" *ngIf="filteredCountries.length == 0">
                 <p>No country was found for this query...</p>
             </div>

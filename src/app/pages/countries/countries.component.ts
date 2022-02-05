@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import * as GeneralReducer from 'src/app/store/general/general.reducer'
 import { selectCountries } from 'src/app/store/general/general.selectors';
 
@@ -10,6 +11,8 @@ import { selectCountries } from 'src/app/store/general/general.selectors';
   styleUrls: ['./countries.component.scss']
 })
 export class CountriesComponent implements OnInit {
+  subscription1$!: Subscription
+  // 
   fetchingData: boolean = true;
   selectedRegion: string = '';
   query: string = '';
@@ -28,9 +31,14 @@ export class CountriesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnDestroy() {
+    this.subscription1$.unsubscribe()
+  }
+
   getCountries(p: any) {
     this.fetchingData = true;
-    this.generalStore.select(selectCountries).subscribe(
+    this.selectedRegion = '';
+    this.subscription1$ = this.generalStore.select(selectCountries).subscribe(
       (res: any) => {
         this.filteredCountries = this.countries = [...res];
 
@@ -41,15 +49,12 @@ export class CountriesComponent implements OnInit {
             return country.region == p.region
           })
         }
-        else {
-          this.selectedRegion = '';
-        }
 
         if (p.query) {
           this.query = p.query;
 
           this.filteredCountries = this.filteredCountries.filter((country: any) => {
-            return country.name.common.toLowerCase().includes(p.query)
+            return country.name.common.toLowerCase().includes(p.query.toLowerCase())
           })
 
         }

@@ -10,7 +10,7 @@ const routes: Routes = [
         loadChildren: () => import('./pages/countries/countries.module').then(m => m.CountriesModule)
       },
       {
-        path: ':id',
+        path: ':name',
         loadChildren: () => import('./pages/country-detail/country-detail.module').then(m => m.CountryDetailModule)
       },
     ]
