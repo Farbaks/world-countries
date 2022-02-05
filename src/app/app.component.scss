@@ -8,5 +8,8 @@
         padding: 80px var(--side-padding);
         overflow-x: hidden;
         flex-grow: 1;
+        @media screen and(max-width:575px) {
+            padding-top: 40px;
+        }
     }
 }

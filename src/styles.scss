@@ -127,6 +127,7 @@ ngx-skeleton-loader .loader {
     justify-content: space-between;
     @media screen and (max-width: 575px) {
         flex-flow: column;
+        align-items: flex-start;
     }
     .input-field {
         width: 40%;
@@ -179,9 +180,6 @@ ngx-skeleton-loader .loader {
         border-radius: 3px;
         cursor: pointer;
         position: relative;
-        @media screen and (max-width: 575px) {
-            width: 100%;
-        }
         &:after {
             content: "";
             width: 8px;
