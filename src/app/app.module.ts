@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderModule } from './component/common/header/header.module';
 // import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { StoreModule } from '@ngrx/store';
+// import { StoreModule } from '@ngrx/store';
 // import { generalFeatureKey, GeneralReducer } from './store/general/general.reducer';
 
 @NgModule({
