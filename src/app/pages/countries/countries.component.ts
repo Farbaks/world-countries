@@ -63,6 +63,11 @@ export class CountriesComponent implements OnInit {
     )
   }
 
+  resetQuery() {
+    this.query = '';
+    this.queryCountries();
+  }
+
   queryCountries() {
     this.router.navigate(['/countries'],
       { queryParams: { query: this.query, region: this.selectedRegion } })

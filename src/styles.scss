@@ -161,6 +161,12 @@ ngx-skeleton-loader .loader {
                 font-weight: 500;
             }
         }
+        .cancel {
+            padding: 10px;
+            font-size: 20px;
+            color: red;
+            cursor: pointer;
+        }
     }
     .select-container {
         min-width: 200px;

@@ -70,7 +70,7 @@
                     </p>
                 </div>
                 <div class="row">
-                    <p class="text">Language(s): <span> {{country.languages}}</span></p>
+                    <p class="text" *ngIf="country.languages.length > 0">Language(s): <span> {{country.languages}}</span></p>
                     <p class="text">Landlocked: <span> {{country.landlocked ? 'Yes' : 'No'}}</span></p>
                 </div>
                 <div class="row">
