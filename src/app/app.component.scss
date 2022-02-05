@@ -1,0 +1,13 @@
+.full-page {
+    width: 100%;
+    height: 100%;
+    .page-body {
+        width: 100%;
+        min-height: 100%;
+        content: '';
+        background: var(--body-background);
+        padding: 0 var(--side-padding);
+        overflow-x: hidden;
+        flex-grow: 1;
+    }
+}

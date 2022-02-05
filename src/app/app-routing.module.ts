@@ -1,7 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'countries',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/countries/countries.module').then(m => m.CountriesModule)
+      },
+      {
+        path: ':id',
+        loadChildren: () => import('./pages/country-detail/country-detail.module').then(m => m.CountryDetailModule)
+      },
+    ]
+  },
+  {
+    path: '',
+    redirectTo: 'countries',
+    pathMatch: 'full'
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

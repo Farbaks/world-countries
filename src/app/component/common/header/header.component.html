@@ -1,0 +1,19 @@
+<header>
+    <h2 class="title">Where in the world?</h2>
+    <div class="light-mode-item">
+        <div class="switch" (click)="this.generalService.enableDarkMode()">
+            <div class="image">
+                <img src="assets/images/moon.png">
+            </div>
+            <span>Dark Mode</span>
+        </div>
+    </div>
+    <div class="dark-mode-item">
+        <div class="switch"(click)="this.generalService.disableDarkMode()">
+            <div class="image">
+                <img src="assets/images/sun.png">
+            </div>
+            <span>Light Mode</span>
+        </div>
+    </div>
+</header>
