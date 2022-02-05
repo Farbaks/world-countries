@@ -9,10 +9,12 @@ header {
     box-shadow: var(--box-shadow);
     position: sticky;
     top: 0;
+    z-index: 100;
     .title {
         font-size: 20px;
         font-weight: 600;
         color: var(--text-color-1);
+        margin: 0;
     }
     .switch {
         display: flex;
@@ -26,6 +28,7 @@ header {
         .image {
             width: 20px;
             margin-right: 10px;
+            display: flex;
             img {
                 width: 100%;
             }

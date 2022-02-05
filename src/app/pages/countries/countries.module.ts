@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { CountriesRoutingModule } from './countries-routing.module';
 import { CountriesComponent } from './countries.component';
-
+import {MatMenuModule} from '@angular/material/menu';
+import { FormsModule } from '@angular/forms';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,10 @@ import { CountriesComponent } from './countries.component';
   ],
   imports: [
     CommonModule,
-    CountriesRoutingModule
+    CountriesRoutingModule,
+    FormsModule,
+    MatMenuModule,
+    NgxSkeletonLoaderModule
   ]
 })
 export class CountriesModule { }
