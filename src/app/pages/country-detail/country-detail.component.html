@@ -9,11 +9,10 @@
     <div class="nav" *ngIf="!fetchingData && visitedCountries.length > 0">
         <p>Recently viewed:</p>
         <div class="links">
-            <span
-            [routerLink]="['/countries/'+ country.name.common]"
-                *ngFor="let country of visitedCountries.slice((visitedCountries.length - 5), visitedCountries.length)">
-                {{country.name.common}}
-            </span>
+            <a [routerLink]="['/countries/'+ country.name.common]"
+                *ngFor="let country of visitedCountries.slice((visitedCountries.length - 5), visitedCountries.length); index as i">
+                {{i != 0 ? ', ' : ''}}{{country.name.common}}
+            </a>
         </div>
     </div>
     <div class="body">

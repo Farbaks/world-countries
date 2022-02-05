@@ -13,7 +13,7 @@
             <div class="input-field">
                 <img class="light-mode-item" src="assets/images/search.svg">
                 <img class="dark-mode-item" src="assets/images/search.svg">
-                <input type="text" [(ngModel)]="query" (ngModelChange)="queryCountries()" placeholder="Search for country" />
+                <input type="search" [(ngModel)]="query" (ngModelChange)="queryCountries()" placeholder="Search for country" />
             </div>
             <div class="select-container" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Country Regions">
                 <span>{{(selectedRegion && !['', 'all'].includes(selectedRegion)) ? selectedRegion : 'Filter By Region'}}</span>

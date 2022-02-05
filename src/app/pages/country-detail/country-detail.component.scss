@@ -12,9 +12,9 @@
             display: flex;
             flex-flow: row wrap;
             justify-content: flex-start;
-            gap: 5px;
-            span {
-                text-decoration: underline;
+            gap: 5px 0;
+            a {
+                text-decoration: none;
                 color: steelblue;
                 cursor: pointer;
             }
@@ -26,7 +26,7 @@
         flex-flow: row wrap;
         align-items: flex-start;
         justify-content: space-between;
-        margin-top: 50px;
+        margin-top: 30px;
         .flag {
             width: 50%;
             @media screen and(max-width:575px) {
