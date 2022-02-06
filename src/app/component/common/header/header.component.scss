@@ -7,7 +7,7 @@ header {
     padding: 25px var(--side-padding);
     background: var(--header-background);
     box-shadow: var(--box-shadow);
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 100;
     .title {
