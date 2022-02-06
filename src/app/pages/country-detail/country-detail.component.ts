@@ -56,7 +56,7 @@ export class CountryDetailComponent implements OnInit {
       (res: any) => {
         if (res.length != 0) {
           this.country = { ...res.find((country: any) => country.name.common.toLowerCase() == this.countryName.toLocaleLowerCase()) };
-          this.country.languages = Object.entries(this.country.languages ?? {});
+          this.country.languages = Object.values(this.country.languages ?? {});
           this.country.currencies = [...Object.keys(this.country.currencies ?? {})];
           // Set border countries
           if (this.country.borders) {
