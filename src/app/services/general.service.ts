@@ -17,10 +17,6 @@ export class GeneralService {
         private store: Store<GeneralReducer.State>
     ) { }
 
-    onToggle(): void {
-        this.darkModeService.toggle();
-    }
-
     isDarkModeEnabled(): Observable<boolean> {
         return this.darkModeService.darkMode$
     }

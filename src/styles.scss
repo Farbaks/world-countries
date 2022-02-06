@@ -27,13 +27,14 @@ body {
     height: 100%;
     margin: 0;
     --side-padding: 10%;
+    background: var(--header-background);
     @media screen and(max-width: 768px) {
         --side-padding: 5%;
     }
     @media screen and(max-width: 540px) {
         --side-padding: 16px;
     }
-    background: var(--header-background);
+    
 }
 html.dark-mode,
 body.dark-mode {

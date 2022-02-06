@@ -1,19 +1,9 @@
 <header>
-    <h2 class="title">Where in the world?</h2>
-    <div class="light-mode-item">
-        <div class="switch" (click)="this.generalService.enableDarkMode()">
-            <div class="image">
-                <img src="assets/images/moon.png">
-            </div>
-            <span>Dark Mode</span>
+    <h2 class="title" routerLink="/">Where in the world?</h2>
+    <div class="switch" (click)="darkModeEnabled ? generalService.disableDarkMode() : generalService.enableDarkMode()">
+        <div class="image">
+            <img [src]="darkModeEnabled ? 'assets/images/sun.png' : 'assets/images/moon.png'">
         </div>
-    </div>
-    <div class="dark-mode-item">
-        <div class="switch"(click)="this.generalService.disableDarkMode()">
-            <div class="image">
-                <img src="assets/images/sun.png">
-            </div>
-            <span>Light Mode</span>
-        </div>
+        <span>{{darkModeEnabled ? 'Light Mode' : 'Dark Mode'}}</span>
     </div>
 </header>

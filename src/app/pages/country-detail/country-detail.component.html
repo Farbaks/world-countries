@@ -10,8 +10,8 @@
         <p>Recently viewed:</p>
         <div class="links">
             <a [routerLink]="['/countries/'+ country.name.common]"
-                *ngFor="let country of visitedCountries.slice((visitedCountries.length - 5), visitedCountries.length); index as i">
-                {{i != 0 ? ', ' : ''}}{{country.name.common}}
+                *ngFor="let country of visitedCountries; index as i">
+                {{country.name.common}}{{i+1 != visitedCountries.length ? ', ' : ''}}
             </a>
         </div>
     </div>

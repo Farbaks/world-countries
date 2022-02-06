@@ -16,7 +16,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     CountriesRoutingModule,
     FormsModule,
     MatMenuModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
   ]
 })
 export class CountriesModule { }

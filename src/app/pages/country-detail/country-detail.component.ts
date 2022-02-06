@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import * as GeneralReducer from 'src/app/store/general/general.reducer'
 import { Store } from '@ngrx/store';
-import { addVisitedCountries } from 'src/app/store/general/general.actions';
 import { selectCountries, selectVisitedCountries } from 'src/app/store/general/general.selectors';
-import { GeneralService } from 'src/app/services/general.service';
 import { Subscription } from 'rxjs';
 import { Location } from '@angular/common';
+import { GeneralService } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-country-detail',
@@ -14,8 +13,8 @@ import { Location } from '@angular/common';
   styleUrls: ['./country-detail.component.scss']
 })
 export class CountryDetailComponent implements OnInit {
-  subscription1$!: Subscription
-  subscription2$!: Subscription
+  subscription1$: Subscription = new Subscription();
+  subscription2$: Subscription = new Subscription();
   // 
   fetchingData: boolean = true;
   countryName!: string;
@@ -23,7 +22,6 @@ export class CountryDetailComponent implements OnInit {
   visitedCountries: Array<any> = [];
   borderCountries: Array<any> = [];
   constructor(
-    private router: Router,
     private location: Location,
     private route: ActivatedRoute,
     private generalStore: Store<GeneralReducer.State>,
@@ -31,6 +29,8 @@ export class CountryDetailComponent implements OnInit {
   ) {
     this.route.params.subscribe(p => {
       window.scrollTo(0, 0);
+      this.subscription1$.unsubscribe();
+      this.subscription2$.unsubscribe();
       this.countryName = p.name;
       this.getCountries();
     });
@@ -40,8 +40,8 @@ export class CountryDetailComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.subscription1$.unsubscribe()
-    this.subscription2$.unsubscribe()
+    this.subscription1$.unsubscribe();
+    this.subscription2$.unsubscribe();
   }
 
   goBack() {
@@ -65,26 +65,29 @@ export class CountryDetailComponent implements OnInit {
             });
           }
 
+          // Set this country as visited
+          this.generalService.addVisitedCountry(this.country);
+
+          // Get list of visited countries
           this.getVisitedCountry();
           setTimeout(() => {
             this.fetchingData = false;
           }, 500);
-          
         }
-
       }
     )
   }
 
   getVisitedCountry() {
-    this.generalService.addVisitedCountry(this.country);
-    // 
     this.visitedCountries = [];
     this.subscription2$ = this.generalStore.select(selectVisitedCountries).subscribe(
       (res: any) => {
         this.visitedCountries = res.filter((country: any) => country.name.common.toLowerCase() != this.countryName.toLowerCase());
+        // Take latest 5 visited countries
+        if (this.visitedCountries.length > 5) {
+          this.visitedCountries = this.visitedCountries.slice((this.visitedCountries.length - 5), this.visitedCountries.length)
+        }
       }
     )
   }
-
 }

@@ -12,7 +12,7 @@
         <ng-container *ngIf="!fetchingData">
             <div class="input-field">
                 <img class="light-mode-item" src="assets/images/search.svg">
-                <img class="dark-mode-item" src="assets/images/search.svg">
+                <img class="dark-mode-item" src="assets/images/search-white.svg">
                 <input type="search" [(ngModel)]="query" (ngModelChange)="queryCountries()" placeholder="Search for country" />
                 <span class="cancel" *ngIf="query != ''" (click)="resetQuery()">&times;</span>
             </div>
@@ -53,19 +53,11 @@
                 </div>
                 <div class="details">
                     <p class="title">
-                        <ngx-skeleton-loader [theme]="{'width':'100px','height':'20px','margin-bottom':'0px'}">
+                        <ngx-skeleton-loader style="width: 100%;" [theme]="{'width':'70%','height':'20px','margin-bottom':'0px'}">
                         </ngx-skeleton-loader>
                     </p>
-                    <p class="text">
-                        <ngx-skeleton-loader [theme]="{'width':'140px','height':'15px','margin-bottom':'0px'}">
-                        </ngx-skeleton-loader>
-                    </p>
-                    <p class="text">
-                        <ngx-skeleton-loader [theme]="{'width':'140px','height':'15px','margin-bottom':'0px'}">
-                        </ngx-skeleton-loader>
-                    </p>
-                    <p class="text">
-                        <ngx-skeleton-loader [theme]="{'width':'140px','height':'15px','margin-bottom':'0px'}">
+                    <p class="text" *ngFor="let n of [1,2,3]">
+                        <ngx-skeleton-loader style="width: 100%;" [theme]="{'width':'100%','height':'15px','margin-bottom':'0px'}">
                         </ngx-skeleton-loader>
                     </p>
                 </div>
@@ -73,7 +65,7 @@
         </ng-container>
         <!-- Data state -->
         <ng-container *ngIf="!fetchingData">
-            <!--  -->
+            <!-- Non empty states -->
             <ng-container *ngIf="filteredCountries.length > 0">
                 <div class="item hover" [routerLink]="country.name.common" *ngFor="let country of filteredCountries">
                     <div class="flag">

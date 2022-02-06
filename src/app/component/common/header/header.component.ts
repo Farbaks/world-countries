@@ -8,7 +8,9 @@ import { GeneralService } from 'src/app/services/general.service';
 })
 export class HeaderComponent implements OnInit {
   darkModeEnabled: boolean = false;
-  constructor(public generalService: GeneralService) { }
+  constructor(public generalService: GeneralService) {
+    this.checkMode()
+  }
 
   ngOnInit(): void {
   }

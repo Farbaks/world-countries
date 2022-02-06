@@ -17,7 +17,7 @@ export class AppComponent {
     private generalService: GeneralService,
     private generalStore: Store<GeneralReducer.State>) {
     this.getCountries();
-    // this.getVisitedCountries();
+    this.getVisitedCountries();
   }
 
   getCountries() {
@@ -40,6 +40,7 @@ export class AppComponent {
     )
   }
 
+  // Save visited countries list from storage into Ngrx store
   getVisitedCountries() {
     this.generalService.addVisitedCountry();
   }

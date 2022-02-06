@@ -11,7 +11,7 @@ import { selectCountries } from 'src/app/store/general/general.selectors';
   styleUrls: ['./countries.component.scss']
 })
 export class CountriesComponent implements OnInit {
-  subscription1$!: Subscription
+  subscription1$: Subscription = new Subscription();
   // 
   fetchingData: boolean = true;
   selectedRegion: string = '';
@@ -21,9 +21,10 @@ export class CountriesComponent implements OnInit {
   constructor(
     private generalStore: Store<GeneralReducer.State>,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {
     this.route.queryParams.subscribe(p => {
+      this.subscription1$.unsubscribe();
       this.getCountries(p);
     });
   }
@@ -39,7 +40,7 @@ export class CountriesComponent implements OnInit {
     this.fetchingData = true;
     this.selectedRegion = '';
     this.subscription1$ = this.generalStore.select(selectCountries).subscribe(
-      (res: any) => {
+      (res: Array<any>) => {
         this.filteredCountries = this.countries = [...res];
 
         if (![undefined, '', 'all'].includes(p.region)) {
@@ -70,7 +71,7 @@ export class CountriesComponent implements OnInit {
 
   queryCountries() {
     this.router.navigate(['/countries'],
-      { queryParams: { query: this.query, region: this.selectedRegion } })
+      { queryParams: { query: this.query.trim(), region: this.selectedRegion } })
   }
 
   filterByRegion(region: string) {
