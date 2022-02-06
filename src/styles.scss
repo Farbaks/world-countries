@@ -155,9 +155,6 @@ ngx-skeleton-loader .loader {
             color: var(--text-color-1);
             font-weight: 500;
             font-size: 14px;
-            &:focus {
-                font-size: 14px !important;
-            }
             &::placeholder {
                 font-size: 14px;
                 font-weight: 500;

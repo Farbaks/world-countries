@@ -67,7 +67,7 @@
         <ng-container *ngIf="!fetchingData">
             <!-- Non empty states -->
             <ng-container *ngIf="filteredCountries.length > 0">
-                <div class="item hover" [routerLink]="country.name.common" *ngFor="let country of filteredCountries">
+                <div class="item hover" [routerLink]="country.name.common" *ngFor="let country of filteredCountries; trackBy:trackByCountryName">
                     <div class="flag">
                         <img [src]="country.flags.svg" />
                     </div>

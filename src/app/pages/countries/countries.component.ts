@@ -78,4 +78,8 @@ export class CountriesComponent implements OnInit {
     this.router.navigate(['/countries'], { queryParams: { query: this.query, region: region } })
   }
 
+  trackByCountryName(index: number, country: any): string {
+    return country.name.common
+  }
+
 }
