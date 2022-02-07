@@ -56,10 +56,12 @@
                     margin-bottom: 20px;
                 }
                 .text {
+                    width: 100%;
                     font-size: 14px;
                     font-weight: 600;
                     color: var(--text-color-2);
                     margin-bottom: 10px;
+                    word-break: break-all;
                     &:last-child {
                         margin-bottom: 0;
                     }

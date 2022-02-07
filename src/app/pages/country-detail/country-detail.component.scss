@@ -50,13 +50,12 @@
             .row {
                 width: 100%;
                 display: flex;
-                flex-flow: row wrap;
                 align-items: flex-start;
                 justify-content: space-between;
                 margin-bottom: 10px;
-                // @media screen and(max-width:575px) {
-                //     margin-bottom: 0;
-                // }
+                @media screen and(max-width:575px) {
+                    flex-flow: column;
+                }
                 &:last-child {
                     margin-bottom: 0;
                 }
